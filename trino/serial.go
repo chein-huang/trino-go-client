@@ -160,6 +160,9 @@ func Serial(v interface{}) (string, error) {
 	case []byte:
 		return "X'" + strings.ToUpper(hex.EncodeToString(x)) + "'", nil
 
+	case []string:
+		return strings.Join(x, ","), nil
+
 	case trinoDate:
 		return fmt.Sprintf("DATE '%04d-%02d-%02d'", x.year, x.month, x.day), nil
 	case trinoTime:
